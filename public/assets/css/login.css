@@ -1,0 +1,25 @@
+/***GENERAL***/
+input[type='submit']{
+    display: block;
+    width: 100px;
+    height: 30px;
+    margin: 10px auto;
+}
+
+/***LOGIN FORM***/
+.loginForm , .registerForm{
+    background-color: #bcbeff;
+    margin: 10px auto;
+    padding :30px; 
+    width:400px
+}
+.loginForm label , .registerForm label{
+    display: inline-block;
+    min-width: 100px;
+    margin: 10px;
+}
+
+/***LOGIN FORM***/
+.registerForm label{
+    min-width: 145px
+}

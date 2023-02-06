@@ -1,0 +1,37 @@
+/***GENERAL***/
+table{
+    margin: auto ;
+}
+table , th , td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td{
+    padding: 20px;
+}
+h3{
+    text-align: center;
+}
+
+/***CONTAINER***/
+.container{
+    background-color:#bcbeff ;
+    width: 75%; 
+    padding: 20px;
+    margin: auto auto;
+}
+
+.editButton , .deleteButton{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+    
+.deleteButton{
+    background-color: red;
+}
+.editButton  {
+    background-color: blue;
+
+}

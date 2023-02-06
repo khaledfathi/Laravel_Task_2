@@ -1,9 +1,12 @@
 <?php
 
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Category; 
 use App\Http\Controllers\Product; 
 use App\Http\Controllers\Profile; 
+use App\Http\Controllers\Login; 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,22 +18,35 @@ use App\Http\Controllers\Profile;
 |
 */
 
+//root page
 route::get('/', fn()=> redirect('/login') );
 
-route::group(['prefix' => '/categories'], function () {
-    route::get('addcategory', [Category::class, 'AddCategoryPage']); 
-    route::get('savecategory', [Category::class, 'SaveCategory']); 
-    route::get('updatecategory', [Category::class, 'UpdateCategory']); 
+//profile(list all)
+
+route::group(['prefix' => '/profile', 'middleware' => 'auth'], function () { 
+    route::get('/', [Profile::class, 'ProfilePage' ]);
+    route::get('deleteall', [Profile::class, 'DeleteAll']); 
+}); 
+//categories
+route::group(['prefix' => '/categories' ,'middleware'=>'auth'], function () {
+    route::get('addcategory', [Category::class, 'AddCategoryPage']);
+    route::post('savecategory', [Category::class, 'SaveCategory']); 
+    route::get('updatecategory', [Category::class, 'UpdateCategoryPage']); 
     route::get('deletecategory', [Category::class, 'DeleteCategory']); 
 });
 
-route::group(['prefix' => '/products'], function () {
+//products 
+route::group(['prefix' => '/products' , 'middleware'=>'auth'], function () {
     route::get('addproduct', [Product::class , 'AddProductPage']); 
     route::get('saveproduct', [Product::class , 'SaveProduct']); 
-    route::get('updateproduct', [Product::class , 'UpdateProduct']); 
+    route::get('updateproduct', [Product::class , 'UpdateProductPage']); 
     route::get('deleteproduct', [Product::class , 'DeleteProduct']); 
 });
 
-route::get('/profile', [Profile::class , 'ProfilePage']); 
+//login and register
+route::get('/login' ,[Login::class , 'LoginPage' ])->name('login')->middleware('guest'); 
+route::post('/login' , [Login::class , 'LoginAuth']); 
+route::post('/register' , [Login::class , 'Register']); 
 
-route::get('login' , fn()=> view('login' , ['title'=>'login'])); 
+//logout
+route::get('/logout' , [Login::class , 'Logout']); 

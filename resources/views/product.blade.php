@@ -2,19 +2,20 @@
 @section('title' , 'Add Product') 
 
 @section('content')
-<div class="msg">
-    <p>Messagees</p>
-</div>
-<div>
-    <label for="">Product Name </label>
-    <input type="text">
-</div>
-<label for="">Category  </label>
-<select name="category[]" id="" multiple>
-    <option value="">Cat1</option>
-    <option value="">Cat2</option>
-    <option value="">Cat3</option>
-    <option value="">Cat4</option>
-</select>
-<input type="submit" value="Save">
+@if (session('ProductMsg'))
+    <p>{{session('ProductMsg')}}</p>
+@endif 
+<form action="saveproduct">
+    <div>
+        <label for="">Product Name </label>
+        <input type="text" name="name">
+    </div>
+    <label for="">Category  </label>
+    <select name="categories[]" id="" multiple="multiple">
+        @foreach ($categories as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+        @endforeach
+    </select>
+<input type="submit" value="Save"></form>
+
 @endsection

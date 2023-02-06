@@ -1,0 +1,72 @@
+/***GENERAL***/
+body{
+    padding :0px; 
+    margin: 0px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/***HEADER***/
+.header ,
+.header p , 
+.header h1 {
+    margin: 0px;
+}
+.header{
+    background-color: lightblue;
+    height: 100px;
+}
+.header h1{
+    text-align: center;
+    line-height: 100px;
+}
+.header a{
+    display: block;
+    text-align: center;
+    border: 1px sloid transparent;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    right : 20px;
+    top :25px ; 
+}
+.header p {
+    position: absolute;
+    right:140px; 
+    top : 32px; 
+    font-size: 16pt;
+}
+
+/***NAV BAR***/
+.navBar ul{
+    list-style: none;
+    width: 600px;
+    margin:  20px auto ;
+}
+.navBar ul li {
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    width : 150px; 
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0px 20px;
+}
+.navBar ul li:hover {
+background-color: lightblue;
+color: darkblue;
+}
+.navBar ul li a {
+    display: block;
+    height: 100%;
+    width : 100%; 
+}
