@@ -53,8 +53,7 @@ class Category extends Controller
 
     public function UpdateCategoryPage(Request $request)
     {
-        $category = categories::where('id', $request->id)->first();
-        return view('categoryUpdate' , ['category'=>$category]); 
+        return "Update Category <br><br><a href='/'>HomePage</a>";  
     }
 
 
